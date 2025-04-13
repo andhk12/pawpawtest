@@ -1,21 +1,19 @@
-// Fix for Journal.kt
 package com.example.pawpawtest
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
 
 class Journal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_journal)
 
-        // Dummy data
         val journalList = listOf(
             JournalEntry(
                 date = "12 April 2069",
@@ -30,21 +28,46 @@ class Journal : AppCompatActivity() {
                 imageResId = R.drawable.sample_cat
             ),
             JournalEntry(
-                date = "10 April 2069",
+                date = "11 April 2069",
                 title = "Grooming Tahunan",
-                description = "Grooming di PawCarePal, bulu kotor dan kusut. Habis pulang dari grooming, terjadi hujan badai",
+                description = "Grooming di PawPets, bulu kotor dan kusut. Pulang dari grooming langsung kehujanan",
                 imageResId = R.drawable.sample_cat
+            )
         )
 
+        val resourceList = listOf(
+            ResourceEntry(
+                tag = "#Grooming",
+                title = "Panduan Grooming Kucing Sendiri",
+                date = "12 April 2069",
+                description = "Tutor dek cara mandiin kucing di rumah...",
+                imageResId = R.drawable.sample_cat
+            ),
+            ResourceEntry(
+                tag = "#Grooming",
+                title = "Kucing bisa mandi sendiri",
+                date = "12 April 2069",
+                description = "Mandi mandi mandi~~",
+                imageResId = R.drawable.sample_cat
+            ),
+            ResourceEntry(
+                tag = "#Nutrition",
+                title = "Fish oil berpengaruh pada kucing?",
+                date = "12 April 2069",
+                description = "Ternyata oh ternyata?",
+                imageResId = R.drawable.sample_cat
+            )
         )
 
-        // Initialize RecyclerView with fixed height
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_journal)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = JournalAdapter(journalList)
+        val recyclerViewJournal = findViewById<RecyclerView>(R.id.recycler_journal)
+        recyclerViewJournal.layoutManager = LinearLayoutManager(this)
+        recyclerViewJournal.adapter = JournalAdapter(journalList)
+        recyclerViewJournal.setHasFixedSize(true)
 
-        // Set has fixed size to true for better performance
-        recyclerView.setHasFixedSize(true)
+        val recyclerViewResource = findViewById<RecyclerView>(R.id.recycler_resource)
+        recyclerViewResource.layoutManager = LinearLayoutManager(this)
+        recyclerViewResource.adapter = ResourceAdapter(resourceList)
+        recyclerViewResource.setHasFixedSize(true)
 
         val btnJournal = findViewById<Button>(R.id.btn_journal)
         val btnResource = findViewById<Button>(R.id.btn_resource)
@@ -72,6 +95,5 @@ class Journal : AppCompatActivity() {
             journalLayout.visibility = View.GONE
             resourceLayout.visibility = View.VISIBLE
         }
-
     }
 }

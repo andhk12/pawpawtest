@@ -35,8 +35,12 @@
             android:textColor="@android:color/black"/>
     </LinearLayout>
 
+
+
+
     <!-- ============== JOURNAL CONTENT ============== -->
     <LinearLayout
+
         android:id="@+id/layout_journal_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,22 +115,94 @@
             android:layout_marginTop="12dp" />
     </LinearLayout>
 
+
+
+
     <!-- ============== RESOURCE CONTENT ============== -->
     <LinearLayout
+
         android:id="@+id/layout_resource_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_below="@id/tab_container"
         android:layout_margin="16dp"
-        android:orientation="vertical"
         android:visibility="gone">
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Resource content will appear here..."
+            android:text="Filter :"
             android:textColor="#2F3A60"
-            android:textSize="16sp" />
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_filter_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tab_selected"
+                    android:text="All"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:id="@+id/btn_filter_nutrition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nutrition"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/tab_unselected"/>
+
+                <Button
+                    android:id="@+id/btn_filter_grooming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grooming"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/tab_unselected"/>
+
+                <Button
+                    android:id="@+id/btn_filter_health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Health"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/tab_unselected"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+        <!-- Add Resource Button -->
+        <Button
+            android:id="@+id/btn_add_resource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="＋ Add Resource"
+            android:background="@drawable/tab_unselected"
+            android:textColor="#2F3A60"
+            android:layout_gravity="end"/>
+
+        <!-- RecyclerView for Resource Entries -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_resource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
     </LinearLayout>
+
 
 </RelativeLayout>
