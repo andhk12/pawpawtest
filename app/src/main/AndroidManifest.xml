@@ -13,7 +13,15 @@
         android:theme="@style/Theme.Pawpawtest"
         tools:targetApi="31">
         <activity
-            android:name=".Journal"
+            android:name=".AddResourceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthDetailActivity"
+            android:exported="false" />
+        <activity android:name=".AddJournalActivity" />
+        <activity android:name=".ResourceActivity" />
+        <activity
+            android:name=".JournalActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

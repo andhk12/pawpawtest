@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ResourceAdapter(private val resources: List<ResourceEntry>) :
+class ResourceAdapter(private val resources: MutableList<ResourceEntry>) :
     RecyclerView.Adapter<ResourceAdapter.ResourceViewHolder>() {
 
     class ResourceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,4 +34,12 @@ class ResourceAdapter(private val resources: List<ResourceEntry>) :
     }
 
     override fun getItemCount(): Int = resources.size
+
+    fun addEntry(entry: ResourceEntry) {
+        resources.add(0, entry)
+        notifyItemInserted(0)
+    }
+
+
 }
+

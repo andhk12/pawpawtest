@@ -1,4 +1,3 @@
-// Fix for JournalAdapter.kt
 package com.example.pawpawtest
 
 import android.view.LayoutInflater
@@ -8,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class JournalAdapter(private val journals: List<JournalEntry>) :
+class JournalAdapter(private val journals: MutableList<JournalEntry>) :
     RecyclerView.Adapter<JournalAdapter.JournalViewHolder>() {
 
     class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,4 +32,9 @@ class JournalAdapter(private val journals: List<JournalEntry>) :
     }
 
     override fun getItemCount(): Int = journals.size
+
+    fun addEntry(entry: JournalEntry) {
+        journals.add(0, entry)
+        notifyItemInserted(0)
+    }
 }

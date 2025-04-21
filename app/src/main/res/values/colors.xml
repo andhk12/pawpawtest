@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="font_des">#7C7D81</color>
+    <color name="insert">#7C7D81</color>
 </resources>

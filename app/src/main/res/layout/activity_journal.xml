@@ -30,18 +30,14 @@
             android:id="@+id/btn_resource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Resource"
             android:layout_marginStart="16dp"
             android:background="@drawable/tab_unselected"
-            android:textColor="@android:color/black"/>
+            android:text="Resource"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
-
-
-
-    <!-- ============== JOURNAL CONTENT ============== -->
+    <!-- Journal Content -->
     <LinearLayout
-
         android:id="@+id/layout_journal_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,12 +47,15 @@
 
         <!-- Health Summary Card -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_health_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
-            android:background="@drawable/card_health_background">
+            android:background="@drawable/card_health_background"
+            android:clickable="true"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,99 +112,38 @@
             android:id="@+id/recycler_journal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:clipToPadding="false"
             android:paddingBottom="16dp"
-            android:layout_marginTop="12dp" />
+            android:visibility="gone"/>
     </LinearLayout>
 
-
-
-
-    <!-- ============== RESOURCE CONTENT ============== -->
+    <!-- Empty State (Pesan + Gambar) -->
     <LinearLayout
-
-        android:id="@+id/layout_resource_content"
+        android:id="@+id/empty_state_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/layout_journal_content"
+        android:layout_marginTop="90dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_below="@id/tab_container"
-        android:layout_margin="16dp"
-        android:visibility="gone">
+        android:paddingTop="24dp"
+        android:visibility="visible">
 
-
-
-        <TextView
+        <ImageView
+            android:id="@+id/kucing_jalan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Filter :"
-            android:textColor="#2F3A60"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_filter_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/tab_selected"
-                    android:text="All"
-                    android:textColor="@android:color/white"/>
-
-                <Button
-                    android:id="@+id/btn_filter_nutrition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nutrition"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/tab_unselected"/>
-
-                <Button
-                    android:id="@+id/btn_filter_grooming"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Grooming"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/tab_unselected"/>
-
-                <Button
-                    android:id="@+id/btn_filter_health"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Health"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/tab_unselected"/>
-
-            </LinearLayout>
-        </HorizontalScrollView>
-        <!-- Add Resource Button -->
-        <Button
-            android:id="@+id/btn_add_resource"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="＋ Add Resource"
-            android:background="@drawable/tab_unselected"
-            android:textColor="#2F3A60"
-            android:layout_gravity="end"/>
-
-        <!-- RecyclerView for Resource Entries -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_resource"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="81dp"
             android:layout_marginTop="16dp"
-            android:clipToPadding="false"
-            android:paddingBottom="16dp" />
+            app:srcCompat="@drawable/ic_cat_walk" />
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oh no! Kamu belum memasukkan journal."
+            android:textAlignment="center"
+            android:textColor="#2F3A60"
+            android:textSize="16sp" />
     </LinearLayout>
-
 
 </RelativeLayout>
