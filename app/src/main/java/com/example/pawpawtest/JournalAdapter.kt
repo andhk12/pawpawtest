@@ -13,8 +13,8 @@ class JournalAdapter(private val journals: MutableList<JournalEntry>) :
     class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val date: TextView = itemView.findViewById(R.id.text_date)
         val title: TextView = itemView.findViewById(R.id.text_title)
-        val image: ImageView = itemView.findViewById(R.id.image_journal)
         val description: TextView = itemView.findViewById(R.id.text_description)
+        val image: ImageView = itemView.findViewById(R.id.image_journal)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalViewHolder {
@@ -36,5 +36,19 @@ class JournalAdapter(private val journals: MutableList<JournalEntry>) :
     fun addEntry(entry: JournalEntry) {
         journals.add(0, entry)
         notifyItemInserted(0)
+    }
+
+    fun removeEntry(position: Int) {
+        journals.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    fun getEntry(position: Int): JournalEntry {
+        return journals[position]
+    }
+
+    fun restoreEntry(entry: JournalEntry, position: Int) {
+        journals.add(position, entry)
+        notifyItemInserted(position)
     }
 }

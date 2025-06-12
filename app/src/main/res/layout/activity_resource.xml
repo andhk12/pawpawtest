@@ -22,101 +22,107 @@
             android:id="@+id/btn_journal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/tab_selected"
+            android:background="@drawable/tab_unselected"
             android:text="Journal"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/btn_resource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/tab_unselected"
             android:text="Resource"
-            android:textColor="@android:color/black" />
+            android:layout_marginStart="16dp"
+            android:background="@drawable/tab_selected"
+            android:textColor="@android:color/white"/>
     </LinearLayout>
 
-    <!-- Journal Content -->
     <LinearLayout
-        android:id="@+id/layout_journal_content"
+
+        android:id="@+id/layout_resource_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/tab_container"
-        android:layout_margin="16dp">
+        android:layout_margin="10dp">
 
-        <!-- Health Summary Card -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_health_summary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:background="@drawable/card_health_background"
-            android:clickable="true"
-            android:focusable="true">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/card_health_background"
-                android:padding="12dp">
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/sample_cat"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp"
-                    android:background="@drawable/image_rounded" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Health Summary Card"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:textColor="#2F3A60"/>
-
-                    <TextView
-                        android:id="@+id/last_vet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Last Vet Visit: 3 Apr 2069\nWeight: 6.9 kg\nVaccines: 1"
-                        android:textColor="#2F3A60"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Add Journal Button -->
-        <Button
-            android:id="@+id/btn_add_journal"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="end"
-            android:text="＋ Add journal"
-            android:background="@drawable/tab_unselected"
-            android:textColor="#2F3A60"/>
+            android:text="Filter :"
+            android:textColor="#2F3A60"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
 
-        <!-- RecyclerView Journal -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_journal"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_filter_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tab_selected"
+                    android:text="All"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:id="@+id/btn_filter_nutrition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nutrition"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/tab_unselected"/>
+
+                <Button
+                    android:id="@+id/btn_filter_grooming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grooming"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/tab_unselected"/>
+
+                <Button
+                    android:id="@+id/btn_filter_health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Health"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/tab_unselected"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Add Resource Button -->
+        <Button
+            android:id="@+id/btn_add_resource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:text="＋ Add Resource"
+            android:background="@drawable/tab_unselected"
+            android:textColor="#2F3A60"
+            android:layout_gravity="end"/>
+
+        <!-- RecyclerView for Resource Entries -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_resource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:clipToPadding="false"
             android:paddingBottom="16dp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true"/>
+
     </LinearLayout>
 
     <!-- Empty State (Pesan + Gambar) -->
@@ -124,7 +130,7 @@
         android:id="@+id/empty_state_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_journal_content"
+        android:layout_below="@id/layout_resource_content"
         android:layout_marginTop="90dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -141,7 +147,7 @@
             android:id="@+id/empty_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Oh no! Kamu belum memasukkan journal."
+            android:text="Maaf, belum terdapat resorce yang tersedia."
             android:textAlignment="center"
             android:textColor="#2F3A60"
             android:textSize="16sp" />
